@@ -1,0 +1,27 @@
+name: Docker Image
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ghcr:
+    name: ${{ github.ref == 'refs/heads/main' && 'Build and Push' || 'Test Build' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+
+      - name: Login to ghcr.io
+        uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc # v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ${{ github.ref == 'refs/heads/main' && 'Build and Push' || 'Test Build' }}
+        uses: docker/build-push-action@2eb1c1961a95fc15694676618e422e8ba1d63825 # v4
+        with:
+            push: ${{ github.ref == 'refs/heads/main' }}
+            tags: ghcr.io/biaw/ookla-speedtest-server:latest

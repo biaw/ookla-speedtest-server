@@ -1,0 +1,14 @@
+_extends: .github
+
+repository:
+  name: ookla-speedtest-server
+  description: "The official Ookla Speedtest Server, unofficially dockerized"
+  private: false
+  topics: "ookla, speedtest, speedtest-server, docker"
+
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        checks:
+          - context: Test Build
