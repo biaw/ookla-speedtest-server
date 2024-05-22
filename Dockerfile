@@ -1,4 +1,4 @@
-FROM alpine@sha256:0695fb1256c60a18a975f6246ee757cbf7f9b679d88e8eb9560c0e0a5c4324f7 AS downloader
+FROM alpine@sha256:77726ef6b57ddf65bb551896826ec38bc3e53f75cdde31354fbffb4f25238ebd AS downloader
 RUN apk add --no-cache curl
 
 WORKDIR /tmp
