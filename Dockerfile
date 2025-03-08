@@ -5,7 +5,7 @@ WORKDIR /tmp
 RUN curl -O http://install.speedtest.net/ooklaserver/ooklaserver.sh
 
 
-FROM frolvlad/alpine-glibc@sha256:a36f73d42de1c6ca18587bc1eebf29c34a3261fee1466bae9b27bc759542a95e AS runner
+FROM frolvlad/alpine-glibc@sha256:65fbbb61a682ceba23e18d50fcdabd9d0dac1f7c99dfa3c89805f26ff86999b4 AS runner
 
 WORKDIR /opt/ookla
 COPY --from=downloader /tmp/ooklaserver.sh .
